@@ -47,4 +47,6 @@ end
 
 #Ember Rails
 gem "ember-cli-rails"
+# Data management
+gem 'rails_admin'
 
