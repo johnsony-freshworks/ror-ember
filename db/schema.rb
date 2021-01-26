@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210126053402) do
+ActiveRecord::Schema.define(version: 20210126071452) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(version: 20210126053402) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "event_id",   limit: 4
+    t.integer  "user_id",    limit: 4
   end
 
   add_index "comments", ["event_id"], name: "index_comments_on_event_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.text     "description", limit: 65535
@@ -37,9 +39,11 @@ ActiveRecord::Schema.define(version: 20210126053402) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "category_id", limit: 4
+    t.integer  "user_id",     limit: 4
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "user_sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -59,5 +63,7 @@ ActiveRecord::Schema.define(version: 20210126053402) do
   end
 
   add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
   add_foreign_key "events", "categories"
+  add_foreign_key "events", "users"
 end
