@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210125115331) do
+ActiveRecord::Schema.define(version: 20210126053402) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -40,6 +40,23 @@ ActiveRecord::Schema.define(version: 20210125115331) do
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
+
+  create_table "user_sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                limit: 255
+    t.string   "crypted_password",     limit: 255
+    t.string   "password_salt",        limit: 255
+    t.string   "persistence_token",    limit: 255
+    t.string   "authentication_token", limit: 255
+    t.string   "perishable_token",     limit: 255
+    t.string   "single_access_token",  limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
 
   add_foreign_key "comments", "events"
   add_foreign_key "events", "categories"

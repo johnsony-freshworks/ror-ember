@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+  resource :user_session
   resources :comments
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :events
@@ -58,6 +60,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  match 'login' => 'user_sessions#new', :as => :login, via: [:get, :post]
+  match 'logout' => 'user_sessions#destroy', :as => :logout, via: [:get, :post]
+  
   mount_ember_app :frontend, to: "/"
   
 end
