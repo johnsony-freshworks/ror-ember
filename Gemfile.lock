@@ -36,6 +36,10 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.4)
+    authlogic (3.4.2)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      request_store (~> 1.0)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.4)
@@ -48,7 +52,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     crass (1.0.6)
     debug_inspector (1.0.0)
     ember-cli-rails (0.11.0)
@@ -152,6 +156,8 @@ GEM
       ffi (~> 1.0)
     rdoc (4.3.0)
     remotipart (1.4.4)
+    request_store (1.5.0)
+      rack (>= 1.4)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -177,7 +183,7 @@ GEM
     temple (0.8.2)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    thor (1.0.1)
+    thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -197,6 +203,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authlogic (= 3.4.2)
   byebug
   coffee-rails (~> 4.1.0)
   ember-cli-rails

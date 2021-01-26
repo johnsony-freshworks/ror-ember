@@ -49,4 +49,6 @@ end
 gem "ember-cli-rails"
 # Data management
 gem 'rails_admin'
+# Authentication
+gem "authlogic", "3.4.2"
 
