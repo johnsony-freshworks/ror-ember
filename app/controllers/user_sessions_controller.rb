@@ -26,14 +26,11 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(user_session_params)
 
-    respond_to do |format|
-      if @user_session.save
-        format.html { redirect_to @user_session, notice: 'User session was successfully created.' }
-        format.json { render :show, status: :created, location: @user_session }
-      else
-        format.html { render :new }
-        format.json { render json: @user_session.errors, status: :unprocessable_entity }
-      end
+    if @user_session.save
+      flash[:success] = "Account registered!"
+      redirect_to users_path
+    else
+      render :action => :new
     end
   end
 
@@ -54,21 +51,18 @@ class UserSessionsController < ApplicationController
   # DELETE /user_sessions/1
   # DELETE /user_sessions/1.json
   def destroy
-    @user_session.destroy
-    respond_to do |format|
-      format.html { redirect_to user_sessions_url, notice: 'User session was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    current_user_session.destroy
+    redirect_to login_url
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_session
-      @user_session = UserSession.find(params[:id])
+      @user_session = current_user_session
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_session_params
-      params.require(:user_session).permit(:email, :password)
+      params.require(:user_session).permit(:email, :password, :remember_me)
     end
 end

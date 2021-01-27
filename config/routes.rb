@@ -60,8 +60,12 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  match 'login' => 'user_sessions#new', :as => :login, via: [:get, :post]
-  match 'logout' => 'user_sessions#destroy', :as => :logout, via: [:get, :post]
+  get 'login', :to => 'user_sessions#new'
+  get 'signup', :to => 'users#new'
+  get 'logout', :to => 'user_sessions#destroy'
+
+  # match 'login' => 'user_sessions#new', :as => :login, via: [:get, :post]
+  # match 'logout' => 'user_sessions#destroy', :as => :logout, via: [:get, :post]
   
   mount_ember_app :frontend, to: "/"
   
