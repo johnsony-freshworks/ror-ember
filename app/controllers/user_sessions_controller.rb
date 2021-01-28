@@ -10,6 +10,7 @@ class UserSessionsController < ApplicationController
   # GET /user_sessions/1
   # GET /user_sessions/1.json
   def show
+    render :json => current_user
   end
 
   # GET /user_sessions/new
@@ -27,8 +28,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(user_session_params)
 
     if @user_session.save
-      flash[:success] = "Account registered!"
-      redirect_to users_path
+      redirect_to '/index'
     else
       render :action => :new
     end
@@ -52,7 +52,7 @@ class UserSessionsController < ApplicationController
   # DELETE /user_sessions/1.json
   def destroy
     current_user_session.destroy
-    redirect_to login_url
+    redirect_to '/'
   end
 
   private

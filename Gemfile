@@ -52,3 +52,4 @@ gem 'rails_admin'
 # Authentication
 gem "authlogic", "3.4.2"
 
+gem 'active_model_serializers', '~> 0.10.7'
