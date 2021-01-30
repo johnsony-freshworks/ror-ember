@@ -45,8 +45,14 @@ GEM
       activerecord (>= 3.2)
       activesupport (>= 3.2)
       request_store (~> 1.0)
+    autoprefixer-rails (10.2.0.0)
+      execjs
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
+    bootstrap (5.0.0.beta1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
     case_transform (0.2)
@@ -60,6 +66,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.8)
+    connection_pool (2.2.3)
     crass (1.0.6)
     debug_inspector (1.0.0)
     ember-cli-rails (0.11.0)
@@ -115,10 +122,13 @@ GEM
     nested_form (0.3.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    popper_js (1.16.0)
     rack (1.6.13)
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
+    rack-protection (2.1.0)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.11.3)
@@ -163,6 +173,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rdoc (4.3.0)
+    redis (3.3.5)
     remotipart (1.4.4)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -177,9 +188,22 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sidekiq (4.2.10)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.2, >= 3.2.1)
     spring (2.1.1)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -213,6 +237,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.7)
   authlogic (= 3.4.2)
+  bootstrap (~> 5.0.0.beta1)
   byebug
   coffee-rails (~> 4.1.0)
   ember-cli-rails
@@ -223,6 +248,7 @@ DEPENDENCIES
   rails_admin
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  sidekiq (= 4.2.10)
   spring
   turbolinks
   uglifier (>= 1.3.0)

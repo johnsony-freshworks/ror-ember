@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comment: MyText
+  user_id: 
+  event_id: 
+  event_type: Event
+
+two:
+  comment: MyText
+  user_id: 
+  event_id: 
+  event_type: Event

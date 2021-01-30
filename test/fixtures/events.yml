@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  start: 2021-01-28 13:34:39
+  end: 2021-01-28 13:34:39
+  public: false
+  user_id: 
+  category_id: 
+
+two:
+  description: MyText
+  start: 2021-01-28 13:34:39
+  end: 2021-01-28 13:34:39
+  public: false
+  user_id: 
+  category_id: 

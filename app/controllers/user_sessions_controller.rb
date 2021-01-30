@@ -52,7 +52,7 @@ class UserSessionsController < ApplicationController
   # DELETE /user_sessions/1.json
   def destroy
     current_user_session.destroy
-    redirect_to '/'
+    redirect_to '/index'
   end
 
   private

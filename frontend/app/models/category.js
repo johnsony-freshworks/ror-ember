@@ -1,0 +1,7 @@
+import Model, { attr, hasMany } from '@ember-data/model';
+
+export default class CategoryModel extends Model {
+  @attr('string') title;
+  @attr('string') description;
+  @hasMany events;
+}

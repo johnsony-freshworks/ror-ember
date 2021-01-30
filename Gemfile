@@ -53,3 +53,5 @@ gem 'rails_admin'
 gem "authlogic", "3.4.2"
 
 gem 'active_model_serializers', '~> 0.10.7'
+gem 'bootstrap', '~> 5.0.0.beta1'
+gem 'sidekiq', "4.2.10"

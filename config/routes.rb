@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  
+  resources :events do
+    resources :comments
+  end
+
+  resources :categories
+  resource :users
   resource :user_session
   resources :comments
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

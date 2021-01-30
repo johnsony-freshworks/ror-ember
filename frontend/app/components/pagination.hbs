@@ -1,0 +1,28 @@
+{{yield}}
+ 
+
+{{#if @pager.pages}}
+
+<ul>
+	{{#if @pager.first.show}}
+	<li {{on 'click' (fn @paginate @pager.first.page)}}>First {{@pager.first.page}}</li>
+	{{/if}}
+
+	{{#if @pager.prev.show}}
+	<li {{on 'click' (fn @paginate @pager.prev.page)}}>Previous {{@pager.prev.page}}</li>
+	{{/if}}
+
+	{{#each @pager.pages as |pager|}}
+	<li {{on 'click' (fn @paginate pager.page)}} class="{{pager.class}}">{{pager.page}} {{pager.class}}</li>
+	{{/each}}
+
+	{{#if @pager.next.show}}
+	<li {{on 'click' (fn @paginate @pager.next.page)}}>Next {{@pager.next.page}}</li>
+	{{/if}}
+
+	{{#if @pager.last.show}}
+	<li {{on 'click' (fn @paginate @pager.last.page)}}>Last {{@pager.last.page}}</li>
+	{{/if}}
+</ul>
+
+{{/if}}

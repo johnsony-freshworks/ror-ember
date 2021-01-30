@@ -6,16 +6,22 @@ export default class IndexRoute extends Route {
 	@service store;
 	@service auth;
 
-	// async model() {
-	// 	let response = await fetch('/currentuser');
-	// 	this.auth.currentuser = await response.json();
+	queryParams = {
+		page: {
+			refreshModel: true,
+			replace: false
+		},
+		size: {
+			refreshModel: true,
+			replace: false
+		}
+	}
 
+	async model({page, size: limit} = params) {
 
-	// 	// this.store.find('user', 1)
-	// 		// .then(user => user.get('events'))
+		let response = await fetch('/currentuser');
+		this.auth.currentuser = await response.json();
 
-
-	// 	const events = await this.store.findAll('event');
-	// 	return events;
-	// }
+		return this.store.query('event', {limit, offset: (page * limit - limit)});
+	}
 }
