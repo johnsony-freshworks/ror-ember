@@ -7,6 +7,7 @@
 
         <Events 
         	@userSpecific="true"
+            @destroy={{fn this.destroy}}
         	@events={{@model.events}}
         	@page={{this.page}} 
         	@size={{this.size}} 

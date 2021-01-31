@@ -53,7 +53,12 @@ class EventsController < ApplicationController
 
   # DELETE /events/1
   def destroy
-    @event.destroy
+    if @event.destroy
+      flash[:notice] = "deleted"
+      head :no_content
+    else
+      render json: @event.errors, status: :unprocessable_entity
+    end
   end
 
   private

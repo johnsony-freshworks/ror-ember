@@ -1,0 +1,105 @@
+<form class="py-4">
+
+  <div class="row mb-3">
+    <label for="inputEmail3" class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-10">
+    	<FroalaEditor
+		  @content={{html-safe this.description}}
+		  @update={{fn (mut this.description)}}
+		  @updateEvent="input"
+		/>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="inputstartAt" class="col-md-2 col-form-label">Start At</label>
+    <div class="col-md-4">
+    	<Input
+		  @type="datetime-local"
+		  @value={{this.start}}
+		  class="form-control"
+		/>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="inputendAt" class="col-md-2 col-form-label">End At</label>
+    <div class="col-md-4">
+    	<Input
+		  @type="datetime-local"
+		  @value={{this.end}}
+		  class="form-control"
+		/>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="inputendAt" class="col-md-2 col-form-label">Category</label>
+    <div class="col-md-4">
+      	<select name="newType" class="form-select" onchange={{action (mut this.category) value="target.value" }}>
+			<option value="" selected  hidden >Select </option>
+			{{#each @model.categories as |item|}}
+				<option value="{{item.id}}" selected={{if (equal item.id this.category) 'true'}}>{{item.title}}</option>
+			{{/each}}
+		</select>
+    </div>
+    <div class="col">
+		<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addCategory">Add a new Category</button>
+
+		<div class="modal fade" id="addCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <form>
+		          <div class="mb-3">
+		            <label for="recipient-name" class="col-form-label">Title:</label>
+		            <Input
+					  @type="text"
+					  @value={{this.newCategory.title}}
+					  class="form-control"
+					/>
+		          </div>
+		          <div class="mb-3">
+		            <label for="category-description" class="col-form-label">Description:</label>
+		            <Textarea 
+		            	class="form-control" 
+		            	@value={{this.newCategory.description}}
+	            	/>
+		          </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+		        <button {{on 'click' this.createCategory}} type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-10 offset-sm-2 mt-3">
+      <div class="form-check">
+      	<Input
+			@type="checkbox"
+			@checked={{this.public}}
+		/>
+        <label class="form-check-label" for="gridCheck1">
+          Make Public
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-10 offset-sm-2">
+      <button {{action this.submitEvent}} type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+
+</form>
