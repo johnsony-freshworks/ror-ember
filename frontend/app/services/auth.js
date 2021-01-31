@@ -9,10 +9,12 @@ export default class AuthService extends Service {
 	isAuthenticated = false;
 
 	async authenticate() {
-		if (document.cookie.match(/^(.*;)?\s*user_credentials\s*=\s*[^;]+(.*)?$/)) {
+		const currentuser = await fetch('currentuser');
+		debugger;
+		if (currentuser) {
 			this.isAuthenticated = true;
-			const user = await fetch('currentuser');
-			this.user = await user.json();
+			const user = await currentuser.json();
+			user && (this.user = user);
 		}
 	}
 
