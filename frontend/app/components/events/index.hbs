@@ -1,0 +1,27 @@
+<header>
+    <h2 class="fs-3 fw-light">Freshworks Buzz</h2>
+</header>
+
+<Events::Filter />
+
+<div class="table-responsive flex-row flex-wrap">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="p-3 ps-0" scope="col">Time</th>
+                <th class="p-3" scope="col">From</th>
+                <th class="p-3 pe-0" scope="col">Message</th>
+            </tr>
+        </thead>
+        <tbody>
+        	{{#each @model as |event|}}
+            <tr>
+        		<Events::Event />
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+<Common::Pagination @pager={{pager this.model.meta.total this.page this.size}} @paginate={{this.paginate}} />

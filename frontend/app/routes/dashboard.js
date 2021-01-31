@@ -1,8 +1,7 @@
 import Route from '@ember/routing/route';
-// import fetch from 'fetch';
 import { inject as service } from '@ember/service';
 
-export default class IndexRoute extends Route {
+export default class DashboardRoute extends Route {
 	@service store;
 	@service auth;
 
@@ -17,11 +16,11 @@ export default class IndexRoute extends Route {
 		}
 	}
 
+	async beforeModel() {
+		return this.auth.authenticate();
+	}
+
 	async model({page, size: limit} = params) {
-
-		let response = await fetch('/currentuser');
-		this.auth.currentuser = await response.json();
-
 		return this.store.query('event', {limit, offset: (page * limit - limit)});
 	}
 }

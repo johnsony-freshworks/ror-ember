@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | pagination', function(hooks) {
+module('Integration | Component | events/comments', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Pagination />`);
+    await render(hbs`<Events::Comments />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      <Pagination>
+      <Events::Comments>
         template block text
-      </Pagination>
+      </Events::Comments>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
