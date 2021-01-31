@@ -1,3 +1,105 @@
 // $brand-primary: 'purple';
 
 // @import 'node_modules/bootstrap/scss/bootstrap';
+
+
+// //colors
+// $color_shark_approx: #202529;
+// $gallery: #efefef;
+// $color_oslo_gray_approx: #848687;
+// $color_dove_gray_approx: #666;
+// $color_silver_chalice_approx: #a3a3a3;
+// $color_gallery_10_approx: rgba(240, 240, 240, 0.1);
+// $color_alabaster_approx: #f9f9f9;
+
+// body {
+// 	font-size: 16px;
+// 	background-color: $color_shark_approx;
+// 	letter-spacing: .5px;
+// 	color: $gallery;
+// }
+// .bg {
+// 	background-color: $color_shark_approx;
+// }
+// .buzz {
+// 	h2 {
+// 		font-weight: 300;
+// 	}
+// 	.h2 {
+// 		font-weight: 300;
+// 	}
+// 	.table {
+// 		color: $gallery;
+// 		border-color: $color_dove_gray_approx;
+// 		th {
+// 			color: $color_silver_chalice_approx;
+// 			text-transform: uppercase;
+// 			font-size: 12px;
+// 			font-weight: 400;
+// 		}
+// 		.time {
+// 			font-size: 12px;
+// 			text-transform: uppercase;
+// 			color: $color_silver_chalice_approx;
+// 		}
+// 		> :not(:last-child) > :last-child > * {
+// 			border-color: $color_dove_gray_approx;
+// 		}
+// 	}
+// }
+// .page-item {
+// 	.page-link {
+// 		font-size: 12px;
+// 		letter-spacing: 1px;
+// 		text-transform: uppercase;
+// 		color: $color_silver_chalice_approx;
+// 		border-color: $color_gallery_10_approx;
+// 		background-color: transparent;
+// 	}
+// 	&.active .page-link {
+// 		color: $color_alabaster_approx;
+// 		background-color: transparent;
+// 		border-color: $color_gallery_10_approx;
+// 	}
+// }
+// .search-container {
+// 	letter-spacing: 1px;
+// 	text-transform: uppercase;
+// 	.search-item {
+// 		font-size: 12px;
+// 		color: $color_oslo_gray_approx;
+// 		border: 1px solid $color_gallery_10_approx;
+// 		background-color: transparent;
+// 	}
+// 	label {
+// 		font-size: 12px;
+// 		text-transform: uppercase;
+// 		color: $color_oslo_gray_approx;
+// 		font-weight: 300;
+// 	}
+// }
+// .comments {
+// 	border: 1px solid $color_gallery_10_approx;
+// 	.comment {
+// 		color: $gallery;
+// 		background-color: transparent;
+// 		&:not(:last-child) {
+// 			border-bottom: 1px solid $color_dove_gray_approx;
+// 		}
+// 	}
+// }
+// header .navbar {
+// 	background-color: $color_shark_approx;
+// }
+// aside nav .nav-link {
+// 	color: $color_oslo_gray_approx;
+// 	font-size: 14px;
+// 	font-weight: 400;
+// 	&.active {
+// 		color: $gallery;
+// 		background-color: $color_shark_approx;
+// 	}
+// 	&:hover {
+// 		color: $gallery;
+// 	}
+// }

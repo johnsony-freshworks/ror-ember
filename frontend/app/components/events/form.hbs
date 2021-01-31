@@ -4,8 +4,8 @@
     <label for="inputEmail3" class="col-md-2 col-form-label">Description</label>
     <div class="col-md-10">
     	<FroalaEditor
-		  @content={{html-safe this.description}}
-		  @update={{fn (mut this.description)}}
+		  @content={{html-safe description}}
+		  @update={{fn (mut description)}}
 		  @updateEvent="input"
 		/>
     </div>
@@ -16,7 +16,7 @@
     <div class="col-md-4">
     	<Input
 		  @type="datetime-local"
-		  @value={{this.start}}
+		  @value={{start}}
 		  class="form-control"
 		/>
     </div>
@@ -27,7 +27,7 @@
     <div class="col-md-4">
     	<Input
 		  @type="datetime-local"
-		  @value={{this.end}}
+		  @value={{end}}
 		  class="form-control"
 		/>
     </div>
@@ -36,10 +36,10 @@
   <div class="row mb-3">
     <label for="inputendAt" class="col-md-2 col-form-label">Category</label>
     <div class="col-md-4">
-      	<select name="newType" class="form-select" onchange={{action (mut this.category) value="target.value" }}>
+    	<select class="form-select" onchange={{action "selectCategory" value="target.value"}}>
 			<option value="" selected  hidden >Select </option>
 			{{#each @model.categories as |item|}}
-				<option value="{{item.id}}" selected={{if (equal item.id this.category) 'true'}}>{{item.title}}</option>
+				<option value="{{item.id}}" selected={{equal item.id category.id}}>{{item.title}}</option>
 			{{/each}}
 		</select>
     </div>
@@ -59,7 +59,7 @@
 		            <label for="recipient-name" class="col-form-label">Title:</label>
 		            <Input
 					  @type="text"
-					  @value={{this.newCategory.title}}
+					  @value={{newCategory.title}}
 					  class="form-control"
 					/>
 		          </div>
@@ -67,14 +67,14 @@
 		            <label for="category-description" class="col-form-label">Description:</label>
 		            <Textarea 
 		            	class="form-control" 
-		            	@value={{this.newCategory.description}}
+		            	@value={{newCategory.description}}
 	            	/>
 		          </div>
 		        </form>
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-		        <button {{on 'click' this.createCategory}} type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+		        <button {{on 'click' createCategory}} type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
 		      </div>
 		    </div>
 		  </div>
@@ -87,7 +87,7 @@
       <div class="form-check">
       	<Input
 			@type="checkbox"
-			@checked={{this.public}}
+			@checked={{public}}
 		/>
         <label class="form-check-label" for="gridCheck1">
           Make Public
@@ -98,7 +98,7 @@
 
   <div class="row mb-3">
     <div class="col-md-10 offset-sm-2">
-      <button {{action this.submitEvent}} type="submit" class="btn btn-primary">Submit</button>
+      <button {{action submitEvent}} type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 

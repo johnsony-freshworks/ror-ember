@@ -8,11 +8,12 @@ class EventsController < ApplicationController
                   .limit(params[:limit])
                   .offset(params[:offset])
                   .where(:category => params[:category])
+                  .order('start DESC')
       render json: @events, include: ['user', 'category', 'comment'], meta: { 
                     total: Event.where(:category => params[:category]).count 
                   }
     else
-      @events = Event.limit(params[:limit]).offset(params[:offset])
+      @events = Event.limit(params[:limit]).offset(params[:offset]).order('start DESC')
       render json: @events, include: ['user', 'category', 'comment'], meta: { total: Event.count }
     end
   end

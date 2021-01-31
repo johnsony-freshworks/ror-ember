@@ -17,7 +17,6 @@ export default class DashboardController extends Controller {
 
 	@action
 	paginate(page) {
-		console.warn(page);
 		this.page = page;
 	}
 
