@@ -10,7 +10,6 @@ export default class AuthService extends Service {
 
 	async authenticate() {
 		const currentuser = await fetch('currentuser');
-		debugger;
 		if (currentuser) {
 			this.isAuthenticated = true;
 			const user = await currentuser.json();
