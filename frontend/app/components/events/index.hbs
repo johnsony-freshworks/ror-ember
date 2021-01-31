@@ -17,7 +17,7 @@
         <tbody>
         	{{#each @events as |event|}}
             <tr>
-        		<Events::Event @event={{event}} @userSpecific={{@userSpecific}} />
+        		<Events::Event @event={{event}} @userSpecific={{@userSpecific}} @destroy={{@destroy}} />
             </tr>
             {{/each}}
         </tbody>

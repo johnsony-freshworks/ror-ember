@@ -16,6 +16,6 @@
 		<LinkTo @route="posts.edit" @model="{{@event.id}}" class="btn btn-outline-secondary">Edit</LinkTo>
 	</td>
 	<td>
-		<button {{action (fn @destroy @event.id)}} type="button" class="btn btn-outline-danger">Delete</button>
+		<button {{on 'click' (fn @destroy @event.id)}} type="button" class="btn btn-outline-danger">Delete</button>
 	</td>
 {{/if}}
