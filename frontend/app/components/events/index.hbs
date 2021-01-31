@@ -16,7 +16,7 @@
         </thead>
         <tbody>
         	{{#each @events as |event|}}
-            <tr>
+            <tr {{on 'click' (fn @showComments event)}}>
         		<Events::Event @event={{event}} @userSpecific={{@userSpecific}} @destroy={{@destroy}} />
             </tr>
             {{/each}}

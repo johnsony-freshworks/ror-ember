@@ -1,86 +1,46 @@
-{{#if @model}}
+{{#if @event}}
 
 <div class="col col-lg-3">
     <aside class="card p-4">
 
       <figure>
         <blockquote class="blockquote">
-          <p>Full day powercut at my locality. I'll be taking off today.</p>
+          {{#froala-content}}
+              {{html-safe @event.description}}
+          {{/froala-content}}
         </blockquote>
         <figcaption class="blockquote-footer font-monospace">
-          Narendran Velmurugan <br> <small><cite title="Source Title">Today 06:51 PM</cite></small>
+          {{@event.user.name}} <br> <small><cite>{{@event.start}}</cite></small>
         </figcaption>
       </figure>
 
       <ul class="list-group comments p-3 pe-0">
-        <li class="comment list-group-item list-group-item-action px-0">
-          <figure>
-            <blockquote class="blockquote fs-6">
-              <p>Full day powercut at my locality. I'll be taking off today.</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              Narendran Velmurugan <br> <small><cite title="Source Title">Today 06:51 PM</cite></small>
-            </figcaption>
-          </figure>
-        </li>
-        <li class="comment list-group-item list-group-item-action px-0">
-          <figure>
-            <blockquote class="blockquote fs-6">
-              <p>Full day powercut at my locality. I'll be taking off today.</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              Narendran Velmurugan <br> <small><cite title="Source Title">Today 06:51 PM</cite></small>
-            </figcaption>
-          </figure>
-        </li>
-        <li class="comment list-group-item list-group-item-action px-0">
-          <figure>
-            <blockquote class="blockquote fs-6">
-              <p>Full day powercut at my locality. I'll be taking off today.</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              Narendran Velmurugan <br> <small><cite title="Source Title">Today 06:51 PM</cite></small>
-            </figcaption>
-          </figure>
-        </li>
-        <li class="comment list-group-item list-group-item-action px-0">
-          <figure>
-            <blockquote class="blockquote fs-6">
-              <p>Full day powercut at my locality. I'll be taking off today.</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              Narendran Velmurugan <br> <small><cite title="Source Title">Today 06:51 PM</cite></small>
-            </figcaption>
-          </figure>
-        </li>
-        <li class="comment list-group-item list-group-item-action px-0">
-          <figure>
-            <blockquote class="blockquote fs-6">
-              <p>Full day powercut at my locality. I'll be taking off today.</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              Narendran Velmurugan <br> <small><cite title="Source Title">Today 06:51 PM</cite></small>
-            </figcaption>
-          </figure>
-        </li>
-        <li class="comment list-group-item list-group-item-action px-0">
-          <figure>
-            <blockquote class="blockquote fs-6">
-              <p>Full day powercut at my locality. I'll be taking off today.</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              Narendran Velmurugan <br> <small><cite title="Source Title">Today 06:51 PM</cite></small>
-            </figcaption>
-          </figure>
-        </li>
+        {{#each @event.comments as |comment|}}
+          <li class="comment list-group-item list-group-item-action px-0">
+            <figure>
+              <blockquote class="blockquote fs-6">
+                {{#froala-content}}
+                    {{html-safe comment.comment}}
+                {{/froala-content}}
+              </blockquote>
+              <figcaption class="blockquote-footer">
+                <small><cite>{{comment.user.name}}</cite></small>
+              </figcaption>
+            </figure>
+          </li>
+        {{/each}}
       </ul>
 
       <form class="mt-3">
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">What's your opinion</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <label for="comment" class="form-label">What's your opinion</label>
+          <FroalaEditor
+            @content={{html-safe @newComment}}
+            @update={{fn (mut @newComment)}}
+            @updateEvent="input"
+          />
         </div>
-        <button type="submit" class="btn btn-primary">Post</button>
+        <button {{action @addComment}} class="btn btn-primary">Post</button>
       </form>
     </aside>
 </div>
