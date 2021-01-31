@@ -11,13 +11,13 @@ export default class AuthService extends Service {
 	async authenticate() {
 		const currentuser = await fetch('currentuser');
 		if (currentuser) {
-			this.isAuthenticated = true;
 			const user = await currentuser.json();
 			user && (this.user = user);
 		}
 	}
 
 	set user(user) {
+		this.isAuthenticated = true;
 		this._user = {id: user.data.id, ...user.data.attributes};
 	}
 
