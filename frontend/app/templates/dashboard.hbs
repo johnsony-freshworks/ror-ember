@@ -10,7 +10,7 @@
         <section class="buzz card p-4">
 
             <header>
-                <h2 class="fs-3 fw-light">{{this.pageTitle}}</h2>
+                <h2 class="fs-3 fw-light">{{if this.pageTitle this.pageTitle 'Freshworks Buzz'}}</h2>
             </header>
 
             <Events 
@@ -20,9 +20,14 @@
             	@paginate={{fn this.paginate}}
             	@total={{this.model.events.meta.total}}
             	@pageCounts={{this.pageCounts}}
+                @showComments={{fn showComments}}
         	/>
         </section>
     </div>
 
-    <Events::Comments />
+    <Events::Comments 
+        @event={{this.eventModel}} 
+        @newComment={{this.newComment}}
+        @addComment={{this.addComment}}
+    />
 </div>
