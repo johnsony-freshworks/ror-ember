@@ -1,0 +1,45 @@
+{{#if @pager.pages}}
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center m-3">
+
+		{{#if @pager.first.show}}
+			<li {{on 'click' (fn @paginate @pager.first.page)}} class="page-item">
+	            <span class="page-link py-2 px-3">First</span>
+	        </li>
+		{{/if}}
+
+		{{#if @pager.prev.show}}
+			<li {{on 'click' (fn @paginate @pager.prev.page)}} class="page-item">
+				<span class="page-link py-2 px-3">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+					</svg>
+	            </span>
+	        </li>
+		{{/if}}
+
+		{{#each @pager.pages as |pager|}}
+			<li {{on 'click' (fn @paginate pager.page)}} class="page-item {{pager.class}}"><span class="page-link py-2 px-3">{{pager.page}}</span></li>
+		{{/each}}
+
+		{{#if @pager.next.show}}
+			<li {{on 'click' (fn @paginate @pager.next.page)}} class="page-item">
+				<span class="page-link py-2 px-3">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+					</svg>
+	            </span>
+	        </li>
+		{{/if}}
+
+		{{#if @pager.last.show}}
+			<li {{on 'click' (fn @paginate @pager.last.page)}} class="page-item">
+	            <span class="page-link py-2 px-3">Last</span>
+	        </li>
+		{{/if}}
+
+	</ul>
+</nav>
+
+{{/if}}

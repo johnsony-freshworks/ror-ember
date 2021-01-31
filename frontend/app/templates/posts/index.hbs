@@ -1,0 +1,18 @@
+<div class="col">
+    <section class="buzz card p-4">
+
+        <header>
+            <h2 class="fs-3 fw-light">My Posts</h2>
+        </header>
+
+        <Events 
+        	@userSpecific="true"
+        	@events={{@model.events}}
+        	@page={{this.page}} 
+        	@size={{this.size}} 
+        	@paginate={{fn this.paginate}}
+        	@total={{this.model.events.meta.total}}
+        	@pageCounts={{this.pageCounts}}
+    	/>
+    </section>
+</div>

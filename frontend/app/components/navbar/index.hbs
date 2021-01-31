@@ -1,0 +1,47 @@
+<header>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+        <div class="container-xxl flex-wrap flex-md-nowrap">
+        	<LinkTo @route="dashboard" class="navbar-brand fs-3 fw-light">WHAT's Happening!</LinkTo>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Freshworks Buzz</a>
+                    </li>
+                </ul> -->
+                <ul class="navbar-nav mb-2 mb-lg-0 navbar-nav flex-row flex-wrap ms-md-auto">
+                    {{#if this.auth.isAuthenticated}}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{this.auth.user.name}}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <LinkTo @route="posts" class="dropdown-item">My Posts</LinkTo>
+                                </li>
+                                <li>
+                                    <LinkTo @route="posts.new" class="dropdown-item">Post Something</LinkTo>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">Register</a>
+                        </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

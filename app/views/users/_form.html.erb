@@ -1,0 +1,46 @@
+<%= form_for(@user) do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :email, class: 'form-label' %><br>
+    <%= f.text_field :email, class: 'form-control' %>
+
+      <!-- <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="mb-3">
+    <%= f.label :name, class: 'form-label' %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+      <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+      <!-- <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+      <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="mb-3">
+    <%= f.label :password, class: 'form-label' %><br>
+    <%= f.password_field :password, class: 'form-control' %>
+      <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+      <!-- <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+      <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="mb-3">
+    <%= f.label :password_confirmation, class: 'form-label' %><br>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <!-- <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1"> -->
+  </div>
+  <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+  <%= f.submit class: 'form-control' %>
+
+<% end %>

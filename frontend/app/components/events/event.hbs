@@ -1,0 +1,21 @@
+<td class="p-3 ps-0" scope="row">
+    Today <br>
+    <span class="time">06:51 PM</span>
+</td>
+
+<td class="p-3">{{if @userSpecific @event.category.title @event.user.name}}</td>
+
+<td class="p-3 pe-0">
+	{{#froala-content}}
+  		{{html-safe @event.description}}
+	{{/froala-content}}
+</td> 
+
+{{#if @userSpecific}}
+	<td>
+		<LinkTo @route="posts.edit" @model="{{@event.id}}" class="btn btn-outline-secondary">Edit</LinkTo>
+	</td>
+	<td>
+		<button {{action (fn @destroy @event.id)}} type="button" class="btn btn-outline-danger">Delete</button>
+	</td>
+{{/if}}

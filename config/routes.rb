@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  
+  resources :events do
+    resources :comments
+  end
+
+  resources :categories
+  resources :users
+  resource :user_session
+  resources :comments
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -34,8 +44,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end
@@ -54,6 +63,13 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  get 'login', :to => 'user_sessions#new'
+  get 'signup', :to => 'users#new'
+  get 'logout', :to => 'user_sessions#destroy'
+
+  match 'currentuser' => 'user_sessions#show', :as => :currentuser, via: [:get]
+  # match 'logout' => 'user_sessions#destroy', :as => :logout, via: [:get, :post]
+  
   mount_ember_app :frontend, to: "/"
   
 end
