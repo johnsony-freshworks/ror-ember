@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
   
     if @user.update(user_params)
-      redirect_to '/index'
+      redirect_to '/'
     else
       respond_to do |format|
         format.html { render :edit }

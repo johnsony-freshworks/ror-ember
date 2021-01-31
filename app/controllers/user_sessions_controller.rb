@@ -28,7 +28,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(user_session_params)
 
     if @user_session.save
-      redirect_to '/index'
+      redirect_to '/'
     else
       render :action => :new
     end
@@ -52,7 +52,7 @@ class UserSessionsController < ApplicationController
   # DELETE /user_sessions/1.json
   def destroy
     current_user_session.destroy
-    redirect_to '/index'
+    redirect_to '/'
   end
 
   private

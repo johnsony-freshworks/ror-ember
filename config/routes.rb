@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories
-  resource :users
+  resources :users
   resource :user_session
   resources :comments
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
