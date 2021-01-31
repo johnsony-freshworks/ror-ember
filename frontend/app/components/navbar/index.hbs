@@ -18,13 +18,18 @@
                                 {{this.auth.user.name}}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Manage Existing</a></li>
-                                <li><a class="dropdown-item" href="#">Post Something</a></li>
-
+                                <li>
+                                    <LinkTo @route="posts" class="dropdown-item">My Posts</LinkTo>
+                                </li>
+                                <li>
+                                    <LinkTo @route="posts.new" class="dropdown-item">Post Something</LinkTo>
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="/logout">Logout</a>
+                                </li>
                             </ul>
                         </li>
                     {{else}}

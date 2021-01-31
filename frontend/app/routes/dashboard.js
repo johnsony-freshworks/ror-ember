@@ -13,6 +13,10 @@ export default class DashboardRoute extends Route {
 		size: {
 			refreshModel: true,
 			replace: false
+		},
+		category: {
+			refreshModel: true,
+			replace: false
 		}
 	}
 
@@ -20,7 +24,14 @@ export default class DashboardRoute extends Route {
 		return this.auth.authenticate();
 	}
 
-	async model({page, size: limit} = params) {
-		return this.store.query('event', {limit, offset: (page * limit - limit)});
+	async model({page, category, size: limit} = params) {
+		return Ember.RSVP.hash({
+			categories: this.store.findAll('category'),
+			events: this.store.query('event', {
+				limit, 
+				offset: (((page || 1) - 1) * limit + 1),
+				category
+			})
+		});
 	}
 }

@@ -1,27 +1,29 @@
-<header>
-    <h2 class="fs-3 fw-light">Freshworks Buzz</h2>
-</header>
-
-<Events::Filter />
+{{#if (gt @total @size)}}
+<Events::Filter @pageCounts={{@pageCounts}} @size={{@size}} />
+{{/if}}
 
 <div class="table-responsive flex-row flex-wrap">
     <table class="table">
         <thead>
             <tr>
                 <th class="p-3 ps-0" scope="col">Time</th>
-                <th class="p-3" scope="col">From</th>
+                <th class="p-3" scope="col">{{if @userSpecific 'Category' 'From'}}</th>
                 <th class="p-3 pe-0" scope="col">Message</th>
+                {{#if @userSpecific}}
+                    <th class="p-3 pe-0" scope="col" colspan="3">Actions</th>
+                {{/if}}
             </tr>
         </thead>
         <tbody>
-        	{{#each @model as |event|}}
+        	{{#each @events as |event|}}
             <tr>
-        		<Events::Event />
+        		<Events::Event @event={{event}} @userSpecific={{@userSpecific}} />
             </tr>
             {{/each}}
         </tbody>
     </table>
 </div>
 
-
-<Common::Pagination @pager={{pager this.model.meta.total this.page this.size}} @paginate={{this.paginate}} />
+{{#if (gt @total @size)}}
+    <Common::Pagination @pager={{pager @total @page @size}} @paginate={{@paginate}} />
+{{/if}}

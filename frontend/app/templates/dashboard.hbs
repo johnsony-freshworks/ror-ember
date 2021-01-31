@@ -1,10 +1,26 @@
-<div class="row py-5">
+<div class="row">
     
-    <Events::Categories />
+    <Events::Categories 
+        @category={{this.category}}
+        @categories={{@model.categories}} 
+        @changeCategory={{this.changeCategory}} 
+    />
 
     <div class="col">
         <section class="buzz card p-4">
-            <Events />
+
+            <header>
+                <h2 class="fs-3 fw-light">{{this.pageTitle}}</h2>
+            </header>
+
+            <Events 
+            	@events={{@model.events}}
+            	@page={{this.page}} 
+            	@size={{this.size}} 
+            	@paginate={{fn this.paginate}}
+            	@total={{this.model.events.meta.total}}
+            	@pageCounts={{this.pageCounts}}
+        	/>
         </section>
     </div>
 

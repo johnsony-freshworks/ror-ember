@@ -6,10 +6,10 @@ import { tracked } from '@glimmer/tracking';
 export default class AuthService extends Service {
 	@service store;
 	_user;
-	isAuthenticated = false;
+	@tracked isAuthenticated = false;
 
 	async authenticate() {
-		const currentuser = await fetch('currentuser');
+		const currentuser = await fetch('/currentuser');
 		if (currentuser) {
 			const user = await currentuser.json();
 			user && (this.user = user);

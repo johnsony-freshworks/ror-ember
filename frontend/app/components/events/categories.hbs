@@ -1,10 +1,14 @@
 <div class="col col-sm-2">
     <aside>
         <nav class="nav flex-column">
-            <a class="nav-link p-3 mb-1 rounded-3 active" aria-current="page" href="#"># All</a>
-            <a class="nav-link p-3 mb-1 rounded-3" href="#"># Link</a>
-            <a class="nav-link p-3 mb-1 rounded-3" href="#"># Link</a>
-            <a class="nav-link p-3 mb-1 rounded-3" href="#"># Disabled</a>
+        	<a class="nav-link p-3 mb-1 rounded-3 {{if (equal @category null) 'active'}}" {{on 'click' (fn @changeCategory null)}}>
+        		Freshworks Buzz
+        	</a>
+        	{{#each @categories as |tag|}}
+        		<a class="nav-link p-3 mb-1 rounded-3 {{if (equal @category tag.id) 'active'}}" {{on 'click' (fn @changeCategory tag)}}>
+        			# {{tag.title}}
+        		</a>
+        	{{/each}}
         </nav>
     </aside>
 </div>

@@ -38,10 +38,10 @@ function pager([entriesCount, currentPage, pageCount, pagerLength]) {
 	}
 
     return {
-    	first: {show: currentPage > 2, page: firstPage - 1},
+    	first: {show: currentPage > 2, page: firstPage},
 		prev: {show: currentPage > 1, page: currentPage - 1},
-		next: {show: currentPage < lastPage - 1, page: currentPage + 1},
-		last: {show: currentPage < lastPage - 2, page: lastPage + 1},
+		next: {show: currentPage < lastPage, page: currentPage + 1},
+		last: {show: currentPage < lastPage - 2, page: lastPage},
         pages
     }
 }

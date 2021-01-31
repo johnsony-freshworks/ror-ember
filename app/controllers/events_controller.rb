@@ -3,8 +3,18 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.limit(params[:limit]).offset(params[:offset])
-    render json: @events, include: ['user', 'category', 'comment'], meta: { total: Event.count }
+    if params[:category].present?
+      @events = Event
+                  .limit(params[:limit])
+                  .offset(params[:offset])
+                  .where(:category => params[:category])
+      render json: @events, include: ['user', 'category', 'comment'], meta: { 
+                    total: Event.where(:category => params[:category]).count 
+                  }
+    else
+      @events = Event.limit(params[:limit]).offset(params[:offset])
+      render json: @events, include: ['user', 'category', 'comment'], meta: { total: Event.count }
+    end
   end
 
   # GET /events/1
