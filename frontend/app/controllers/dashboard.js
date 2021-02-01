@@ -6,6 +6,7 @@ import { inject as service } from '@ember/service';
 export default class DashboardController extends Controller {
 	@service auth;
 	@service store;
+	@service shared;
 
 	pageCounts = [25, 50, 100];
 	pageTitle;
@@ -32,6 +33,10 @@ export default class DashboardController extends Controller {
 			this.category = null;
 			set(this, "pageTitle", null);
 		}
+
+		this.shared.toasters = 'johnson';
+
+		// $(".toast").toast('show');
 	}
 
 	get categoryModel() {

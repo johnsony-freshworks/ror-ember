@@ -1,6 +1,7 @@
 <td class="p-3 ps-0" scope="row">
-    Today <br>
-    <span class="time">06:51 PM</span>
+    {{!-- Today <br> --}}
+    {{!-- <span class="time">06:51 PM</span> --}}
+    {{moment-from-now @event.start}}
 </td>
 
 <td class="p-3">{{if @userSpecific @event.category.title @event.user.name}}</td>

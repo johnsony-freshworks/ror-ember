@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 
 export default class AuthService extends Service {
 	@service store;
+	@service shared;
 	_user;
 	@tracked isAuthenticated = false;
 
@@ -19,6 +20,7 @@ export default class AuthService extends Service {
 	set user(user) {
 		this.isAuthenticated = true;
 		this._user = {id: user.data.id, ...user.data.attributes};
+		this.shared.toasters = [];
 	}
 
 	get user() {
