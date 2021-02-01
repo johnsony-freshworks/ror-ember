@@ -10,4 +10,9 @@ export default class PostsNewController extends Controller {
 		const post = this.store.peekRecord('event', event);
 		post.destroyRecord();
 	}
+
+	@action
+	showComments(event) {
+		// this.eventModel = event;
+	}
 }

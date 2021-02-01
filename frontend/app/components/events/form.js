@@ -8,7 +8,7 @@ export default class EventsFormComponent extends Component {
 
 	description = this.args.model.event ? this.args.model.event.description : '';
 	start = this.args.model.event ? (this.args.model.event.start).slice(0,16) : new Date().toISOString().slice(0,16);
-	end = this.args.model.event ? (this.args.model.event.end).slice(0,16) : new Date().toISOString().slice(0,16);
+	// end = this.args.model.event ? (this.args.model.event.end).slice(0,16) : new Date().toISOString().slice(0,16);
 	public = this.args.model.event && this.args.model.event.public;
 	category = this.args.model.event && this.args.model.event.category;
 
@@ -36,7 +36,7 @@ export default class EventsFormComponent extends Component {
 			this.store.findRecord('event', this.args.model.event.id).then(event => {
 				event.description = this.description;
 				event.start = this.start;
-				event.end = this.end;
+				event.end = null;
 				event.public = this.public;
 				event.category = this.category;
 
@@ -46,7 +46,7 @@ export default class EventsFormComponent extends Component {
 			const newEvent = this.store.createRecord('event', {
 				description: this.description,
 				start: this.start,
-				end: this.end,
+				end: null,
 				public: this.public,
 				category: this.category,
 				user

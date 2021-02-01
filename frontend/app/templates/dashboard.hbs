@@ -6,8 +6,8 @@
         @changeCategory={{this.changeCategory}} 
     />
 
-    <div class="col">
-        <section class="buzz card p-4">
+    <div class="{{if this.eventModel 'col-sm-7' 'col'}}">
+        <section class="buzz card buzz-bg p-4">
 
             <header>
                 <h2 class="fs-3 fw-light">{{if this.pageTitle this.pageTitle 'Freshworks Buzz'}}</h2>

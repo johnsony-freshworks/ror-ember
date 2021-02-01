@@ -1,22 +1,40 @@
-<%= form_for @user_session, url: user_session_url do |f| %>
-  <% if @user_session.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited:</h2>
-    <ul>
-      <% @user_session.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<header>
+    <nav class="navbar navbar-dark navbar-expand-md">
+        <div class="container-xxl flex-wrap flex-md-nowrap">
+          <a href="/" class="navbar-brand fs-3 fw-light">WHAT's Happening!</a>
+    </nav>
+</header>
+
+<main>
+  <div class="container-xxl py-5">
+
+    <div class="card buzz-bg p-4">
+      <header>
+        <h2 class="fs-3 fw-light">Login</h2>
+      </header>
+
+      <%= form_for @user_session, url: user_session_url do |f| %>
+        <% if @user_session.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited:</h2>
+          <ul>
+            <% @user_session.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <%= f.label :email %><br />
+        <%= f.text_field :email %><br />
+        <br />
+        <%= f.label :password %><br />
+        <%= f.password_field :password %><br />
+        <br />
+        <%= f.label :remember_me %><br />
+        <%= f.check_box :remember_me %><br />
+        <br />
+        <%= f.submit "Login" %>
       <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <%= f.label :email %><br />
-  <%= f.text_field :email %><br />
-  <br />
-  <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.label :remember_me %><br />
-  <%= f.check_box :remember_me %><br />
-  <br />
-  <%= f.submit "Login" %>
-<% end %>
+    </div> 
+    </div>
+</main>
