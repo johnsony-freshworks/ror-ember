@@ -43,6 +43,7 @@ export default class EventsFormComponent extends Component {
 				event.save();
 			});
 		} else {
+			debugger
 			const newEvent = this.store.createRecord('event', {
 				description: this.description,
 				start: this.start,

@@ -1,5 +1,5 @@
 <div class="col">
-    <section class="buzz card p-4">
+    <section class="buzz card buzz-bg p-4">
 
         <header>
             <h2 class="fs-3 fw-light">My Posts</h2>
@@ -14,6 +14,7 @@
         	@paginate={{fn this.paginate}}
         	@total={{this.model.events.meta.total}}
         	@pageCounts={{this.pageCounts}}
+            @showComments={{this.showComments}}
     	/>
     </section>
 </div>
