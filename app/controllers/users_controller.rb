@@ -29,6 +29,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
   
     if @user.update(user_params)
+      MailWorker.perform_async(@user.id)
+      # UserMailer.welcome_email(@user).deliver_now
       redirect_to '/'
     else
       respond_to do |format|
